@@ -104,23 +104,24 @@ def finito(tab):
 def tour():
     ##initialisation
     nb_errors = 0
-    nb_errors_max = 11
     wordToGuess = random.choice(dictionnary)
     print("//",wordToGuess)
     aff = underscore(wordToGuess)
     lettersAlreadyPlayed = []
     print("Word to guess : ")
-    print(affiche(aff))
+    print(affiche(aff),"\n")
+    x=True
     
     ##debut boucle principale
-    
-    while 1:
+
+    while nb_errors<11:
         letter = inputLetter()#enter a letter
         br=letterInTheWord(letter,wordToGuess) #is the letter in the word at least once ?     
         
         if br:#b = True
             aff=changeUp(letter,aff,wordToGuess)#put the letter in the word
             db=finito(aff)#is the word completed ?
+
         
         else:#b = False
             lettersAlreadyPlayed.append(letter)#take note of the letter
@@ -128,12 +129,12 @@ def tour():
             
             if nb_errors==11:#if number of errors maximum
                 print("You lost, the word to guess was : ", wordToGuess)
-                xy=input("\nDo you want to play again ? [Y/N]\n")
-                if xy=="Y":
-                    tour()   
-                elif xy=="N" :
-                    break                          
+                x=False                
+        print("Word to guess : ",affiche(aff))
+        print("Letters already played :",lettersAlreadyPlayed)
+        print("Number of errors : ",nb_errors,"/11\n")  
         
+            
         if db:##if end by winning
             print(affiche(aff))
             print("The end, you made : ",nb_errors," errors : ",lettersAlreadyPlayed)
@@ -141,12 +142,10 @@ def tour():
             if xy=="Y":
                 tour()
             elif xy=="N" :
-                break
-            
+                x = False        
+                            
+
         
-        print("Word to guess : ",affiche(aff))
-        print("Letters already played :",lettersAlreadyPlayed)
-        print("Number of errors : ",nb_errors,"/11\n")
 
 
 
