@@ -135,27 +135,15 @@ def tour():
         print("Word to guess : ",affiche(aff))
         print("Number of errors : ",nb_errors,"/11\n")  
         print("Letters already played :",lettersAlreadyPlayed)
-        
-            
+
+
         if db:##if end by winning
             print(affiche(aff))
             print("The end, you made : ",nb_errors," errors : ",lettersAlreadyPlayed)
             xy=input("\nDo you want to play again ? [Y/N]\n")
             if xy=="Y":
                 tour()
-            elif xy=="N" :
-                return "End"
+            return "End"
                                     
-
-        
-
-
-
-
-
-
-
-
-
 ##Main : 
 tour()
