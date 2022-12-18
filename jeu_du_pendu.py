@@ -72,6 +72,7 @@ def affiche(tab):
 def inputLetter():
     letter=''
     letter = input("Enter a lowercase letter : ")
+    print("")
     if len(letter)>2:
         inputLetter
     else:
@@ -103,14 +104,14 @@ def finito(tab):
 
 def tour():
     ##initialisation
+    db=False
     nb_errors = 0
     wordToGuess = random.choice(dictionnary)
     print("//",wordToGuess)
     aff = underscore(wordToGuess)
     lettersAlreadyPlayed = []
     print("Word to guess : ")
-    print(affiche(aff),"\n")
-    x=True
+    print(affiche(aff),"\n")    
     
     ##debut boucle principale
 
@@ -129,10 +130,11 @@ def tour():
             
             if nb_errors==11:#if number of errors maximum
                 print("You lost, the word to guess was : ", wordToGuess)
-                x=False                
+                return "End"
+            
         print("Word to guess : ",affiche(aff))
-        print("Letters already played :",lettersAlreadyPlayed)
         print("Number of errors : ",nb_errors,"/11\n")  
+        print("Letters already played :",lettersAlreadyPlayed)
         
             
         if db:##if end by winning
@@ -142,8 +144,8 @@ def tour():
             if xy=="Y":
                 tour()
             elif xy=="N" :
-                x = False        
-                            
+                return "End"
+                                    
 
         
 
